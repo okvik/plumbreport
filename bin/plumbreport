@@ -5,6 +5,6 @@ if(~ $#out 0)
 	out=/fd/1
 for(p in `{@{cd /mnt/plumb; ls}}){
 	if(! ~ $p (send rules)){
-		exec plumbeat $p >>$out &
+		exec eatplumb $p >>$out &
 	}
 }

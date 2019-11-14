@@ -12,10 +12,11 @@ stub:VQ:
 all:V: $TARGET
 
 install:V: all
-	cp $TARGET $BIN
+	cp bin/* $BIN
 
 uninstall:V:
 	rm -f $BIN/$TARGET
+	rm -f $BIN/`{cd bin; ls}
 
 clean:V:
 	rm -f $TARGET obj/*

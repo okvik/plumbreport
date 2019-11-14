@@ -1,0 +1,8 @@
+#!/bin/rc -e
+rfork
+out=/n/chat/chat
+for(p in `{@{cd /mnt/plumb; ls}}){
+	if(! ~ $p (send rules)){
+		plumbeat $p >>$out &
+	}
+}

@@ -1,10 +1,4 @@
 #!/bin/rc -e
-rfork
-out=$1
-if(~ $#out 0)
-	out=/fd/1
-for(p in `{@{cd /mnt/plumb; ls}}){
-	if(! ~ $p (send rules)){
-		exec eatplumb $p >>$out &
-	}
-}
+rfork se
+for(p in `{@{cd /mnt/plumb; ls}})
+	if(! ~ $p (send rules)) @{exec eatplumb $p}&

@@ -25,11 +25,10 @@ main(int argc, char *argv[])
 	
 	if((fd = plumbopen(port, OREAD)) < 0)
 		sysfatal("plumbopen: %r");
-	fprint(2, "listening on \"%s\"\n", port);
 	for(;;){
 		if((m = plumbrecv(fd)) == nil)
 			sysfatal("plumbrecv: %r");
-		print("* [%s] %s\n", port, m->data);
+		print("%s %s\n", port, m->data);
 		plumbfree(m);
 	}
 }
